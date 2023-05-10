@@ -7,8 +7,8 @@
  // POS Js
 var reduce = function(nums, fn, init) {
    let accumulator = init;
-   nums.forEach((element)=>{
-       accumulator = fn(accumulator,element);
-   });
+   for(const index in nums){
+       accumulator = fn(accumulator, nums[index]);
+   }
    return accumulator;
 };
