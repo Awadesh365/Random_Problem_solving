@@ -9,7 +9,7 @@
  * };
  */
  // POD
- // learned about swapping nodes in a linked list
+ // learned about swapping values in a linked list
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
