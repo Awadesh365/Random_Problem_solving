@@ -11,6 +11,8 @@
 class Solution
 {
 public:
+// POD
+// I've learned getting used to writing sol for Linklist probs
     ListNode* swapPairs(ListNode* head) {
         if(!head || !head->next) return head;
          /*
