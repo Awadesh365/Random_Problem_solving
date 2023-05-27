@@ -17,15 +17,10 @@ public:
         }
 
         ll prod = (ll)1;
-        bool check = false;
         for (auto &it : nums)
-        {
             if (it != 0)
                 prod *= (ll)it;
-            else
-                check = true;
-        }
-
+        
         set<int> chk;
         for (auto &it : nums)
             chk.insert(it);
