@@ -17,17 +17,13 @@ public:
         }
 
         ll prod = (ll)1;
-        ll psedoProd = (ll)1;
         bool check = false;
         for (auto &it : nums)
         {
             if (it != 0)
                 prod *= (ll)it;
             else
-            {
                 check = true;
-                psedoProd *= it;
-            }
         }
 
         set<int> chk;
