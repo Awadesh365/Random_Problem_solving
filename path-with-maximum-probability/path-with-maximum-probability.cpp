@@ -11,7 +11,7 @@ public:
    
     double maxProbability(int n, vector<vector<int>> &edges, vector<double> &succProb, int start, int end)
     {
-        vector<vector<pair<int, double>>> graph(n);
+        vector<vector<pair<int, long double>>> graph(n);
         for (int i = 0; i < edges.size(); i++)
         {
             int u = edges[i][0];
