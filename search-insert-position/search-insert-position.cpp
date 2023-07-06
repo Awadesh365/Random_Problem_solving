@@ -1,7 +1,7 @@
 class Solution {
 public:
-  int searchInsert(vector<int> &nums, int target)
+int searchInsert(vector<int> &nums, int target)
 {
-    return equal_range(nums.begin(), nums.end(), target).first - nums.begin();
+    return lower_bound(nums.begin(), nums.end(), target) - nums.begin();
 }
 };
