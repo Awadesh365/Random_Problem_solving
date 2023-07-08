@@ -1,41 +1,45 @@
 class Solution {
 public:
-// using two left's two right's and two mid's -> double binary search
-
-vector<int> searchRange(vector<int> &nums, int target)
+  vector<int> searchRange(vector<int> &nums, int target)
 {
-    int n = nums.size();
 
-    int firstOccurance = -1, lastOccurance = -1;
-    int left1 = 0, left2 = 0, right1 = (n - 1), right2 = (n - 1);
+    // optimal sol:- an algorithm with O(log n) runtime complexity
 
-    for (int i = 0; i < n; i++)
+    // best way
+
+    int fir = -1, sec = -1;
+    int left = 0, right = (nums.size() - 1);
+    while (left <= right)
     {
-        int mid1 = (left1 + right1) / 2;
-        int mid2 = (left2 + right2) / 2;
+        int mid = (left + right) / 2;
 
-        if (nums[mid1] == target)
+        if (nums[mid] == target)
         {
-            firstOccurance = mid1;
-            right1 = mid1 - 1;
+            fir = mid;
+            right = mid - 1;
         }
-        else if (nums[mid1] < target)
-            left1 = mid1 + 1;
+        else if (nums[mid] < target)
+            left = mid + 1;
         else
-            right1 = mid1 - 1;
-
-        if (nums[mid2] == target)
-        {
-            lastOccurance = mid2;
-            left2 = mid2 + 1;
-        }
-        else if (nums[mid2] < target)
-            left2 = mid2 + 1;
-        else
-            right2 = mid2 - 1;
+            right = mid - 1;
     }
-    vector<int> ans={firstOccurance,lastOccurance};
+    left = 0, right = (nums.size() - 1);
+    while (left <= right)
+    {
+        int mid = (left + right) / 2;
 
-    return ans;
+        if (nums[mid] == target)
+        {
+            sec = mid;
+            left = mid + 1;
+        }
+        else if (nums[mid] < target)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+
+    return {fir, sec};
 }
+
 };
