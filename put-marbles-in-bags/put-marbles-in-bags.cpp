@@ -10,7 +10,7 @@ long long putMarbles(vector<int> &weights, int k)
 
     sort(selectedCandidates.begin(), selectedCandidates.end(), greater<ll>());
 
-    // there are k paritions
+    // there are k partions
     // adding wegiths in maxSum from starting,and adding weights in minSum from ending, since the array is sorted in decreasing order
 
     ll m = selectedCandidates.size();
