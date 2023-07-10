@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    // get familiar with trees problmes
   int dfs(TreeNode *root)
 {
     if (root == NULL)
