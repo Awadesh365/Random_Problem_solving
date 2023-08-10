@@ -1,14 +1,18 @@
-    const int M = 35;
-    vector<int>dp(M,-1);
 class Solution {
 public:
+// TmComp:- O(n)
+// SpComp:- O(1)
     int fib(int n) {
         if(n<=1)
-            return dp[n]= n;
+            return n;
 
-            if(dp[n]!=-1)
-                return dp[n];
+        int prev = 1,prev2 = 0;
+        for(int i=2;i<=n;i++){
+            int current = prev + prev2;
+            prev2= prev;
+            prev = current;
+        }
 
-            return dp[n] =  fib(n-1)+fib(n-2);
+        return prev;
     }
 };
