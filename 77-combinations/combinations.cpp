@@ -1,12 +1,12 @@
 class Solution
 {
 public:
-    void findCombinations(vector<int> ds, set<vector<int>> &ans, int k, int start, int n)
+    void findCombinations(vector<int> ds, vector<vector<int>> &ans, int k, int start, int n)
     {
 
         if (ds.size() == k)
         {
-            ans.insert(ds);
+            ans.push_back(ds);
             return;
         }
         for (int i = start; i <= n; i++)
@@ -21,15 +21,15 @@ public:
     vector<vector<int>> combine(int n, int k)
     {
 
-        set<vector<int>> ans;
+        vector<vector<int>> ans;
         vector<int> ds;
 
         findCombinations(ds, ans, k, 1, n);
-        vector<vector<int>> sol;
-        for (auto &it : ans)
-        {
-            sol.push_back(it);
-        }
-        return sol;
+        // vector<vector<int>> sol;
+        // for (auto &it : ans)
+        // {
+        //     sol.push_back(it);
+        // }
+        return ans;
     }
 };
