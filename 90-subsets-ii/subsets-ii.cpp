@@ -1,31 +1,33 @@
-class Solution {
+class Solution
+{
 public:
-   void generateSubSets(vector<int> &nums, vector<vector<int>> &powerSet, vector<int> subSet, int index)
-{
-    if (index >= nums.size())
+    void generateSubsets(vector<int> &nums, int idx,
+                         vector<int> temp, vector<vector<int>> &ans)
     {
-        powerSet.push_back(subSet); // that set is has exceed the size of array.
-        return;
+        if (idx >= nums.size())
+        {
+            ans.push_back(temp);
+            return;
+        }
+
+        temp.push_back(nums[idx]);
+        generateSubsets(nums, idx + 1, temp, ans);
+        temp.pop_back();
+
+        while (idx < nums.size() - 1 && nums[idx] == nums[idx + 1])
+            idx++;
+
+        generateSubsets(nums, idx + 1, temp, ans);
     }
+    vector<vector<int>> subsetsWithDup(vector<int> &nums)
+    {
+        vector<vector<int>> ans;
+        vector<int> temp;
 
-    subSet.push_back(nums[index]);                      // we are considering the element of that index.
-    generateSubSets(nums, powerSet, subSet, index + 1); // to the next index of the array we have.
-    subSet.pop_back();                                  // we have removed that element so that we can not consider that and check without that element.
+        sort(nums.begin(), nums.end());
 
-    while (index < nums.size() - 1 && nums[index] == nums[index + 1]) // to skip all the duplicate elements, since they're already sorted.
-        index++;
+        generateSubsets(nums, 0, temp, ans);
 
-    generateSubSets(nums, powerSet, subSet, index + 1); // the case when we moved forward and not considerd the element.
-}
-
-vector<vector<int>> subsetsWithDup(vector<int> &nums)
-{
-    sort(nums.begin(), nums.end()); // so that the duplicate elements will be contigious and easy to skip.
-
-    vector<vector<int>> powerSet;
-    vector<int> subSet;
-    generateSubSets(nums, powerSet, subSet, 0);
-
-    return powerSet;
-}
+        return ans;
+    }
 };
