@@ -1,51 +1,22 @@
 class Solution {
 public:
-string isBalanced(string s)
-{
-    int n = s.size();
-    stack<char> ans;
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == '(' || s[i] == '{' || s[i] == '[')
-            ans.push(s[i]);
-        else
-        {
-            if (ans.empty())
-                return "NO";
-
-            if (s[i] == ')')
-            {
-                char last = ans.top();
-                ans.pop();
-                if (last != '(')
-                    return "NO";
-            }
-            if (s[i] == '}')
-            {
-                char last = ans.top();
-                ans.pop();
-                if (last != '{')
-                    return "NO";
-            }
-            if (s[i] == ']')
-            {
-                char last = ans.top();
-                ans.pop();
-                if (last != '[')
-                    return "NO";
-            }
+    bool isValid(string s) {
+        stack<char>st;
+    for(auto &it:s){
+        if(it == '(' or it == '[' or it=='{')
+            st.push(it);
+        else {
+            if (!st.size())
+              return false;
+            char ch = st.top();
+            st.pop();
+            if ((it == ')' and ch == '(') or (it == ']' and ch == '[') or
+                (it == '}' and ch == '{'))
+              continue;
+            else
+                return false;
         }
     }
-    if (ans.empty())
-        return "YES";
-
-    return "NO";
-}
-    bool isValid(string s) {
-        string ans = isBalanced(s);
-        if(ans=="YES")
-            return true;
-
-        return false;
+    return st.empty();
     }
 };
